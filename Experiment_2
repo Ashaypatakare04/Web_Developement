@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic HTML</title>
+</head>
+
+<body>
+
+    <h1>Hello World</h1>
+    <p>This is a paragraph.</p>
+
+    <b>Bold text</b><br>
+    <i>Italic text</i><br>
+    <u>Underlined text</u><br>
+
+    <a href="https://www.google.com">Google Link</a><br><br>
+
+    <img src="https://via.placeholder.com/150" alt="Image">
+
+    <h3>List</h3>
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+    </ul>
+
+    <h3>Form</h3>
+    <form>
+        Name: <input type="text"><br><br>
+        <input type="submit">
+    </form>
+
+</body>
+</html>
