@@ -1,33 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Basic HTML</title>
+    <title>Basic HTML Tags</title>
 </head>
 
 <body>
 
-    <h1>Hello World</h1>
-    <p>This is a paragraph.</p>
+    <h1>This is a Heading</h1>
+    <h2>This is a Subheading</h2>
 
-    <b>Bold text</b><br>
-    <i>Italic text</i><br>
-    <u>Underlined text</u><br>
+    <p>This is a paragraph. HTML is used to create web pages.</p>
 
-    <a href="https://www.google.com">Google Link</a><br><br>
+    <p>
+        This text is <b>bold</b>, 
+        this is <i>italic</i>, 
+        and this is <u>underlined</u>.
+    </p>
 
-    <img src="https://via.placeholder.com/150" alt="Image">
+    <a href="https://www.example.com">This is a link</a>
 
-    <h3>List</h3>
+    <br><br>
+
+    <img src="image.jpg" alt="Sample Image" width="200">
+
+    <hr>
+
     <ul>
         <li>HTML</li>
         <li>CSS</li>
+        <li>JavaScript</li>
     </ul>
 
-    <h3>Form</h3>
-    <form>
-        Name: <input type="text"><br><br>
-        <input type="submit">
-    </form>
+    <ol>
+        <li>First</li>
+        <li>Second</li>
+        <li>Third</li>
+    </ol>
 
 </body>
 </html>
