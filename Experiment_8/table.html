@@ -1,1 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>S3 Time Table</title>
 
+  <style>
+    body {
+      font-family: Arial;
+      background: linear-gradient(to right, #e6ecf5, #f5f7fa);
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 75%;
+      margin: 40px auto;
+      background: white;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    caption {
+      background: linear-gradient(to right, #4a6fa5, #6c8fc7);
+      color: white;
+      padding: 10px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #5b86e5;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f6fb;
+    }
+
+    tr:hover {
+      background-color: #dce6f7;
+    }
+
+    .break {
+      background-color: #cfd8e6;
+      font-weight: bold;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+
+<body>
+
+<table>
+  <caption>S3 Batch Weekly Schedule</caption>
+
+  <tr>
+    <th>Day</th>
+    <th>10:00 - 11:00</th>
+    <th>11:15 - 12:15</th>
+    <th>12:15 - 1:15</th>
+    <th>Break</th>
+    <th>2:00 - 3:00</th>
+    <th>3:00 - 4:00</th>
+  </tr>
+
+  <tr>
+    <td>Monday</td>
+    <td>TPMS (Lab)</td>
+    <td>AOOC</td>
+    <td>MDM-II</td>
+    <td rowspan="5" class="break">BREAK</td>
+    <td>DSL</td>
+    <td>-</td>
+  </tr>
+
+  <tr>
+    <td>Tuesday</td>
+    <td>AOOC (Lab)</td>
+    <td>AT</td>
+    <td>DSL</td>
+    <td>WD</td>
+    <td>ENV</td>
+  </tr>
+
+  <tr>
+    <td>Wednesday</td>
+    <td>DS (Lab)</td>
+    <td>AOOC</td>
+    <td>MDM-II</td>
+    <td>DSL</td>
+    <td>ENV</td>
+  </tr>
+
+  <tr>
+    <td>Thursday</td>
+    <td>TTL (Lab)</td>
+    <td>AT</td>
+    <td>AT</td>
+    <td>-</td>
+    <td>OEC-II</td>
+  </tr>
+
+  <tr>
+    <td>Friday</td>
+    <td>TPMS (Lab)</td>
+    <td>-</td>
+    <td>-</td>
+    <td>TPMS</td>
+    <td>OEC-II</td>
+  </tr>
+
+</table>
+
+</body>
+</html>
