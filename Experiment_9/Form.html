@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tables - Lab Archive</title>
+    <title>Employee Registration - Lab Archive</title>
     <style>
         :root {
             --primary-blue: #2563eb;
@@ -153,78 +153,116 @@
             background: #000;
         }
     </style>
+    <style>
+        .form-box {
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 30px;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            text-align: left;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        label {
+            font-weight: 500;
+            display: block;
+            margin-top: 15px;
+            color: var(--text-main);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+            gap: 15px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #28a745, #1e7e34) !important;
+            flex: 1;
+        }
+
+        .reset-btn {
+            background: linear-gradient(135deg, #dc3545, #a71d2a) !important;
+            flex: 1;
+        }
+    </style>
 </head>
 <body>
 
     <div class="info-header">
         <div>Name: <span>Ashay Vitthal Patakare</span></div>
         <div>Roll No: <span>56</span> | Batch: <span>S3</span></div>
-        <div>Experiment No: <span>8</span></div>
+        <div>Experiment No: <span>9</span></div>
     </div>
 
     <hr>
 
     <div class="container">
-        <h1>HTML Tables Example</h1>
+        <h1>Employee Registration Form</h1>
 
-        <div class="card">
-            <p>Tables allow web developers to arrange data into rows and columns. This example shows a weekly timetable.</p>
+        <div class="form-box">
+            <h2>Registration Details</h2>
+            <form>
+                <label>Employee Name:</label>
+                <input type="text" name="ename">
+
+                <label>Employee ID:</label>
+                <input type="text" name="eid">
+
+                <label>Email:</label>
+                <input type="email" name="email">
+
+                <label>Mobile Number:</label>
+                <input type="tel" name="mobile">
+
+                <label>Gender:</label>
+                <div style="margin: 10px 0;">
+                    <input type="radio" name="gender"> Male
+                    <input type="radio" name="gender"> Female
+                </div>
+
+                <label>Department:</label>
+                <select name="dept">
+                    <option>HR</option>
+                    <option>IT</option>
+                    <option>Sales</option>
+                    <option>Finance</option>
+                </select>
+
+                <label>Address:</label>
+                <textarea rows="4"></textarea>
+
+                <div class="form-buttons">
+                    <input type="submit" value="Register" class="btn submit-btn">
+                    <input type="reset" value="Clear" class="btn reset-btn">
+                </div>
+            </form>
         </div>
 
-        <table>
-            <tr>
-                <th>Day</th>
-                <th>9:00 - 10:00</th>
-                <th>10:00 - 11:00</th>
-                <th>11:00 - 12:00</th>
-                <th>12:00 - 1:00</th>
-                <th>2:00 - 3:00</th>
-            </tr>
-            <tr>
-                <td>Monday</td>
-                <td>Maths</td>
-                <td>Physics</td>
-                <td>Chemistry</td>
-                <td>Lunch</td>
-                <td>Lab</td>
-            </tr>
-            <tr>
-                <td>Tuesday</td>
-                <td>English</td>
-                <td>Biology</td>
-                <td>History</td>
-                <td>Lunch</td>
-                <td>Library</td>
-            </tr>
-            <tr>
-                <td>Wednesday</td>
-                <td>Physics</td>
-                <td>Maths</td>
-                <td>English</td>
-                <td>Lunch</td>
-                <td>Sports</td>
-            </tr>
-            <tr>
-                <td>Thursday</td>
-                <td>Chemistry</td>
-                <td>History</td>
-                <td>Biology</td>
-                <td>Lunch</td>
-                <td>Seminar</td>
-            </tr>
-            <tr>
-                <td>Friday</td>
-                <td>TPMS (Lab)</td>
-                <td>-</td>
-                <td>-</td>
-                <td>TPMS</td>
-                <td>OEC-II</td>
-            </tr>
-        </table>
-
         <div class="button-container">
-            <a href="../Experiment_7/Link.html" class="btn">⬅ Back</a>
-            <a href="../Experiment_9/Form.html" class="btn">Continue ➡</a>
+            <a href="../Experiment_8/table.html" class="btn">⬅ Back</a>
+            <a href="../Experiment_10/Resume.html" class="btn">Continue ➡</a>
         </div>
     </div>
 
