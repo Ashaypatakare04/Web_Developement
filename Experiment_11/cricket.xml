@@ -5,6 +5,13 @@
 <cricketers>
 
     <player>
+        <name>Ashay Vitthal Patakare</name>
+        <jersey>56</jersey>
+        <team>India</team>
+        <role>All-rounder</role>
+    </player>
+
+    <player>
         <name>Virat Kohli</name>
         <jersey>18</jersey>
         <team>India</team>

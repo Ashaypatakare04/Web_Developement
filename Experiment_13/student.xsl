@@ -48,6 +48,10 @@ h2{
 
 <body>
 
+<div style="margin: 20px; text-align: center;">
+    <a href="../index.html" style="text-decoration: none; padding: 10px 20px; background: #2c5364; color: white; border-radius: 5px;">Back to Portfolio</a>
+</div>
+
 <h2>Student Information</h2>
 
 <table>
