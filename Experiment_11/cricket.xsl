@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<xsl:stylesheet version="1.0"
-xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:template match="/">
-
 <html>
-
 <head>
-    <title>Football Players Information</title>
+    <title>Cricketers Information</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -24,28 +20,27 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
         h2 {
             text-align: center;
             color: #2563eb;
-            margin-top: 30px;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
+        .player-card {
             background: white;
+            margin-bottom: 20px;
+            padding: 20px;
             border-radius: 12px;
-            overflow: hidden;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             border: 1px solid #e2e8f0;
         }
-        th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #e2e8f0;
+        .name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 10px;
         }
-        th {
-            background-color: #f1f5f9;
-            font-weight: 600;
-            color: #475569;
+        .info {
+            font-size: 0.95rem;
+            margin: 5px 0;
+            color: #64748b;
         }
+        .info b { color: #334155; }
         
         .button-container {
             margin-top: 32px;
@@ -66,42 +61,26 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
         .btn:hover { background-color: #1e40af; }
     </style>
 </head>
-
 <body>
     <div class="container">
+        <h2>Cricketers Information</h2>
+        
+        <xsl:for-each select="cricketers/player">
+            <div class="player-card">
+                <div class="name"><xsl:value-of select="name"/></div>
+                <div class="info"><b>Jersey No:</b> <xsl:value-of select="jersey"/></div>
+                <div class="info"><b>Team:</b> <xsl:value-of select="team"/></div>
+                <div class="info"><b>Role:</b> <xsl:value-of select="role"/></div>
+            </div>
+        </xsl:for-each>
+
         <div class="button-container">
-            <a href="../Experiment_11/cricket.xml" class="btn">⬅ Back</a>
+            <a href="../Experiment_10/Resume.html" class="btn">⬅ Back</a>
             <a href="../index.html" class="btn">🏠 Home</a>
-            <a href="../Experiment_13/student.xml" class="btn">Continue ➡</a>
+            <a href="../Experiment_12/football.xml" class="btn">Continue ➡</a>
         </div>
-
-        <h2>Football Players Information</h2>
-
-<table border="1">
-
-<tr bgcolor="lightblue">
-<th>Name</th>
-<th>Country</th>
-<th>Position</th>
-</tr>
-
-<xsl:for-each select="footballplayers/player">
-
-<tr>
-<td><xsl:value-of select="name"/></td>
-<td><xsl:value-of select="country"/></td>
-<td><xsl:value-of select="position"/></td>
-</tr>
-
-</xsl:for-each>
-
-</table>
-
     </div>
 </body>
-
 </html>
-
 </xsl:template>
-
 </xsl:stylesheet>
