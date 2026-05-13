@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bank Simulator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0f0f0f;
+            --bg-card: #1a1a1a;
+            --accent: #a78bfa;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --success: #34d399;
+            --danger: #f87171;
+            --border: rgba(255,255,255,0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+
+        body {
+            background: var(--bg-dark);
+            background-image: radial-gradient(circle at 20% 20%, rgba(167, 139, 250, 0.1), transparent 50%);
+            min-height: 100vh;
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        .container {
+            background: var(--bg-card);
+            border-radius: 24px;
+            padding: 40px;
+            width: 100%; max-width: 420px;
+            text-align: center;
+            border-top: 3px solid var(--accent);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+        }
+
+        h2 { color: var(--text-primary); margin-bottom: 10px; }
+        #balance { 
+            font-size: 2.5em; font-weight: 700; color: var(--accent);
+            margin-bottom: 25px; display: block;
+        }
+
+        input {
+            width: 100%; padding: 16px; margin-bottom: 20px;
+            background: #242424; border: 1px solid var(--border);
+            border-radius: 12px; color: white; font-size: 1.1em;
+        }
+
+        .btn-group { display: flex; gap: 10px; margin-bottom: 20px; }
+        
+        button {
+            flex: 1; padding: 15px; border: none; border-radius: 12px;
+            font-weight: 600; cursor: pointer; transition: 0.3s;
+        }
+
+        .deposit { background: var(--success); color: #064e3b; }
+        .withdraw { background: var(--danger); color: #7f1d1d; }
+        button:hover { opacity: 0.8; transform: translateY(-2px); }
+
+        .history-box {
+            text-align: left; border-top: 1px solid var(--border);
+            padding-top: 20px; margin-top: 20px;
+        }
+
+        .history-box h4 { color: var(--text-secondary); margin-bottom: 10px; }
+        
+        #history { 
+            list-style: none; max-height: 150px; overflow-y: auto; 
+            font-size: 0.9em; color: var(--text-secondary);
+        }
+
+        .log { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); }
+        .gain { color: var(--success); }
+        .loss { color: var(--danger); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Bank Account</h2>
+    <span id="balance">₹0</span>
+
+    <input type="number" id="amount" placeholder="Amount (₹)">
+
+    <div class="btn-group">
+        <button class="deposit" onclick="moveMoney('in')">Deposit</button>
+        <button class="withdraw" onclick="moveMoney('out')">Withdraw</button>
+    </div>
+
+    <div class="history-box">
+        <h4>Recent Activity</h4>
+        <ul id="history"></ul>
+    </div>
+</div>
+
+<script>
+    let balance = 0;
+
+    function moveMoney(dir) {
+        const input = document.getElementById("amount");
+        const val = parseFloat(input.value);
+        const log = document.getElementById("history");
+
+        if (isNaN(val) || val <= 0) return alert("Enter valid amount");
+        if (dir === 'out' && val > balance) return alert("Insufficient funds");
+
+        // Update balance
+        balance = dir === 'in' ? balance + val : balance - val;
+        document.getElementById("balance").innerText = "₹" + balance.toLocaleString();
+
+        // Add to history
+        const li = document.createElement("li");
+        li.className = "log";
+        li.innerHTML = `<span>${dir === 'in' ? 'Deposit' : 'Withdraw'}</span> 
+                        <span class="${dir === 'in' ? 'gain' : 'loss'}">
+                        ${dir === 'in' ? '+' : '-'}₹${val}</span>`;
+        log.prepend(li);
+
+        input.value = "";
+    }
+</script>
+
+</body>
+</html>
