@@ -3,6 +3,7 @@
 <head>
     <title>Bank Simulator</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #0f0f0f;
@@ -34,7 +35,18 @@
             box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
         }
 
-        h2 { color: var(--text-primary); margin-bottom: 10px; }
+        h2 { 
+            color: var(--text-primary); 
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        h2 .material-icons {
+            color: var(--accent);
+            font-size: 1.2em;
+        }
         #balance { 
             font-size: 2.5em; font-weight: 700; color: var(--accent);
             margin-bottom: 25px; display: block;
@@ -77,7 +89,10 @@
 <body>
 
 <div class="container">
-    <h2>Bank Account</h2>
+    <h2>
+        <span class="material-icons">account_balance</span>
+        Bank Account
+    </h2>
     <span id="balance">₹0</span>
 
     <input type="number" id="amount" placeholder="Amount (₹)">
