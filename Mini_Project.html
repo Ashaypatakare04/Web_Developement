@@ -1,139 +1,230 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Bank Simulator</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <style>
-        :root {
-            --bg-dark: #0f0f0f;
-            --bg-card: #1a1a1a;
-            --accent: #a78bfa;
-            --text-primary: #ffffff;
-            --text-secondary: #a1a1aa;
-            --success: #34d399;
-            --danger: #f87171;
-            --border: rgba(255,255,255,0.08);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PulseVoice Login</title>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
-        body {
-            background: var(--bg-dark);
-            background-image: radial-gradient(circle at 20% 20%, rgba(167, 139, 250, 0.1), transparent 50%);
-            min-height: 100vh;
-            display: flex; justify-content: center; align-items: center;
-        }
+  <style>
+    body{
+      background-image:
+        linear-gradient(to bottom right, rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
+        url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1920&q=80');
 
-        .container {
-            background: var(--bg-card);
-            border-radius: 24px;
-            padding: 40px;
-            width: 100%; max-width: 420px;
-            text-align: center;
-            border-top: 3px solid var(--accent);
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
-        }
-
-        h2 { 
-            color: var(--text-primary); 
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        h2 .material-icons {
-            color: var(--accent);
-            font-size: 1.2em;
-        }
-        #balance { 
-            font-size: 2.5em; font-weight: 700; color: var(--accent);
-            margin-bottom: 25px; display: block;
-        }
-
-        input {
-            width: 100%; padding: 16px; margin-bottom: 20px;
-            background: #242424; border: 1px solid var(--border);
-            border-radius: 12px; color: white; font-size: 1.1em;
-        }
-
-        .btn-group { display: flex; gap: 10px; margin-bottom: 20px; }
-        
-        button {
-            flex: 1; padding: 15px; border: none; border-radius: 12px;
-            font-weight: 600; cursor: pointer; transition: 0.3s;
-        }
-
-        .deposit { background: var(--success); color: #064e3b; }
-        .withdraw { background: var(--danger); color: #7f1d1d; }
-        button:hover { opacity: 0.8; transform: translateY(-2px); }
-
-        .history-box {
-            text-align: left; border-top: 1px solid var(--border);
-            padding-top: 20px; margin-top: 20px;
-        }
-
-        .history-box h4 { color: var(--text-secondary); margin-bottom: 10px; }
-        
-        #history { 
-            list-style: none; max-height: 150px; overflow-y: auto; 
-            font-size: 0.9em; color: var(--text-secondary);
-        }
-
-        .log { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); }
-        .gain { color: var(--success); }
-        .loss { color: var(--danger); }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <h2>
-        <span class="material-icons">account_balance</span>
-        Bank Account
-    </h2>
-    <span id="balance">₹0</span>
-
-    <input type="number" id="amount" placeholder="Amount (₹)">
-
-    <div class="btn-group">
-        <button class="deposit" onclick="moveMoney('in')">Deposit</button>
-        <button class="withdraw" onclick="moveMoney('out')">Withdraw</button>
-    </div>
-
-    <div class="history-box">
-        <h4>Recent Activity</h4>
-        <ul id="history"></ul>
-    </div>
-</div>
-
-<script>
-    let balance = 0;
-
-    function moveMoney(dir) {
-        const input = document.getElementById("amount");
-        const val = parseFloat(input.value);
-        const log = document.getElementById("history");
-
-        if (isNaN(val) || val <= 0) return alert("Enter valid amount");
-        if (dir === 'out' && val > balance) return alert("Insufficient funds");
-
-        // Update balance
-        balance = dir === 'in' ? balance + val : balance - val;
-        document.getElementById("balance").innerText = "₹" + balance.toLocaleString();
-
-        // Add to history
-        const li = document.createElement("li");
-        li.className = "log";
-        li.innerHTML = `<span>${dir === 'in' ? 'Deposit' : 'Withdraw'}</span> 
-                        <span class="${dir === 'in' ? 'gain' : 'loss'}">
-                        ${dir === 'in' ? '+' : '-'}₹${val}</span>`;
-        log.prepend(li);
-
-        input.value = "";
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
     }
-</script>
+
+    .glass{
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    input{
+      outline: none;
+    }
+
+    input:focus{
+      border-color: #6366f1;
+      box-shadow: 0 0 0 2px rgba(99,102,241,0.3);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center font-sans">
+
+  <div class="glass w-full max-w-md p-8 rounded-2xl shadow-2xl">
+
+    <div id="loginSection">
+
+      <h1 class="text-3xl font-bold text-center text-white mb-6">
+        Sign In
+      </h1>
+
+      <form class="space-y-4">
+
+        <div>
+          <label class="block text-white mb-1">Email</label>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            class="w-full px-4 py-2 rounded-lg border"
+            required
+          >
+        </div>
+
+        <div>
+          <label class="block text-white mb-1">Password</label>
+          <input
+            type="password"
+            placeholder="Enter your password"
+            class="w-full px-4 py-2 rounded-lg border"
+            required
+          >
+        </div>
+
+        <div class="text-right">
+          <a href="#" id="forgotBtn"
+             class="text-sm text-indigo-200 hover:underline">
+             Forgot Password?
+          </a>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg font-semibold transition">
+          Login
+        </button>
+
+        <button
+          type="button"
+          class="w-full bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg font-semibold flex items-center justify-center transition">
+
+          <img
+            src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+            class="w-5 h-5 mr-2">
+
+          Sign in with Google
+        </button>
+
+      </form>
+
+      <p class="text-center text-white mt-5">
+        Don't have an account?
+        <a href="#" id="showSignup" class="text-indigo-200 hover:underline">
+          Sign Up
+        </a>
+      </p>
+
+    </div>
+
+    <div id="signupSection" class="hidden">
+
+      <h1 class="text-3xl font-bold text-center text-white mb-6">
+        Create Account
+      </h1>
+
+      <form class="space-y-4">
+
+        <div>
+          <label class="block text-white mb-1">Email</label>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            class="w-full px-4 py-2 rounded-lg border"
+            required
+          >
+        </div>
+
+        <div>
+          <label class="block text-white mb-1">Password</label>
+          <input
+            type="password"
+            placeholder="Create password"
+            class="w-full px-4 py-2 rounded-lg border"
+            required
+          >
+        </div>
+
+        <div>
+          <label class="block text-white mb-1">Confirm Password</label>
+          <input
+            type="password"
+            placeholder="Confirm password"
+            class="w-full px-4 py-2 rounded-lg border"
+            required
+          >
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-semibold transition">
+          Create Account
+        </button>
+
+      </form>
+
+      <p class="text-center text-white mt-5">
+        Already have an account?
+        <a href="#" id="showLogin" class="text-indigo-200 hover:underline">
+          Login
+        </a>
+      </p>
+
+    </div>
+
+  </div>
+
+  <div
+    id="modal"
+    class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center">
+
+    <div class="bg-white w-80 p-6 rounded-xl shadow-xl">
+
+      <h2 class="text-2xl font-bold text-indigo-600 text-center mb-4">
+        Reset Password
+      </h2>
+
+      <input
+        type="email"
+        placeholder="Enter your email"
+        class="w-full px-4 py-2 border rounded-lg mb-4">
+
+      <button
+        class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg mb-2">
+        Send Reset Link
+      </button>
+
+      <button
+        id="closeModal"
+        class="w-full bg-gray-400 hover:bg-gray-500 text-white py-2 rounded-lg">
+        Cancel
+      </button>
+
+    </div>
+  </div>
+
+  <script>
+
+    const loginSection = document.getElementById("loginSection");
+    const signupSection = document.getElementById("signupSection");
+
+    const showSignup = document.getElementById("showSignup");
+    const showLogin = document.getElementById("showLogin");
+
+    const modal = document.getElementById("modal");
+    const forgotBtn = document.getElementById("forgotBtn");
+    const closeModal = document.getElementById("closeModal");
+
+    showSignup.addEventListener("click", function(e){
+      e.preventDefault();
+      loginSection.classList.add("hidden");
+      signupSection.classList.remove("hidden");
+    });
+
+    showLogin.addEventListener("click", function(e){
+      e.preventDefault();
+      signupSection.classList.add("hidden");
+      loginSection.classList.remove("hidden");
+    });
+
+    forgotBtn.addEventListener("click", function(e){
+      e.preventDefault();
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    });
+
+    closeModal.addEventListener("click", function(){
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    });
+
+  </script>
 
 </body>
 </html>
